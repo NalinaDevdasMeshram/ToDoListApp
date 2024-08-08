@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  height: 3rem;
+  background-color: #221a21;
+  color: #ffffff;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
+}
+
+input {
+  margin: 2rem;
+  width: 35rem;
+  height: 2.5rem;
+  padding: 6px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+.btndiv {
+  margin-left: 450px;
+  width: 6rem;
+  height: 3rem;
+}
+.addbtn {
+  width: 6rem;
+  height: 3.5rem;
+  padding: 6px;
+  background-color: #221a21;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+.divbox {
+  margin: 20px 50px;
+  font-size: 20px;
+  height: 2.5rem;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  background-color: #f9f4f9;
+}
+.editbtn {
+  width: 100px;
+  height: 3rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.editbtn:hover {
+  background-color: #f49003;
+}
+.deletebtn {
+  width: 100px;
+  height: 3rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.deletebtn:hover {
+  background-color: #f49003;
+}
