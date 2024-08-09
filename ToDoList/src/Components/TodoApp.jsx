@@ -4,34 +4,26 @@ const TodoApp = () => {
   const [userInput, setUserInput] = useState("");
   const [mainTask, setMainTask] = useState([]);
   const handleSubmit = (e) => {
-    setMainTask([...mainTask, { userInput }]);
     e.preventDefault();
+    if (userInput.trim() === "") return;
+    setMainTask([...mainTask, { userInput }]);
     setUserInput("");
-    // console.log(setMainTask);
   };
-  let rendertask = <h4>No task Available</h4>;
-  if (mainTask.length > 0) {
-    mainTask.map((t, i) => {
-      console.log(i);
-      return (
-        <div key={i}>
-          <h4>{t.userInput}</h4>
-        </div>
-      );
-    });
-  }
-  // mainTask.map((t, i) => {
-  //   console.log(i);
-  //   return (
-  //     <div key={i}>
-  //       <h4>{t.userInput}</h4>
-  //     </div>
-  //   );
-  // });
+
   const handledelete = (i) => {
-    const task = [...mainTask];
-    task.splice(i, 1);
-    setMainTask(task);
+    const updatetask = mainTask.filter((_, index) => index !== i);
+    setMainTask(updatetask);
+  };
+  const handleEdit = (i) => {
+    const taskDescription = prompt(
+      "Please add the Description:",
+      mainTask[i].userInput
+    );
+    if (taskDescription !== null && taskDescription.trim() !== "") {
+      const newTask = [...mainTask];
+      newTask[i].userInput = taskDescription;
+      setMainTask(newTask);
+    }
   };
   return (
     <div style={{ textAlign: "center" }}>
@@ -41,25 +33,31 @@ const TodoApp = () => {
           type="text"
           placeholder="add items.."
           value={userInput}
-          onChange={(e) => setUserInput(e.target.userInput)}
+          onChange={(e) => setUserInput(e.target.value)}
         />
         <div className={styles.btndiv}>
           <button className={styles.addbtn}>ADD</button>
         </div>
       </form>
       <hr />
-      <div className={styles.divbox}>
-        <div>{rendertask}</div>
-        <button
-          className={styles.deletebtn}
-          onClick={() => {
-            handledelete(i);
-          }}
-        >
-          Delete
-        </button>
-        <button className={styles.editbtn}>Edit</button>
-      </div>
+      {mainTask.length > 0 ? (
+        mainTask.map((task, i) => (
+          <div key={i} className={styles.divbox}>
+            <h4>{task.userInput}</h4>
+            <button
+              className={styles.deletebtn}
+              onClick={() => handledelete(i)}
+            >
+              Delete
+            </button>
+            <button className={styles.editbtn} onClick={() => handleEdit(i)}>
+              Edit
+            </button>
+          </div>
+        ))
+      ) : (
+        <h4>No Task Avaible</h4>
+      )}
     </div>
   );
 };
